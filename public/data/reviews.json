@@ -1,0 +1,56 @@
+[
+  {
+    "content": "Sova Registry is incredible! As a business owner, I really appreciate how easy and user-friendly this software is. With its top-of-the-line security features, I can rest assured that my data is safe and protected. Highly recommend!",
+    "rating": 5,
+    "avatar": "/assets/reviews/john.png",
+    "person": "John Smith | CEO"
+  },
+  {
+    "content": "I've been using Sova Registry for a few months now and it has truly transformed the way I manage my projects. The interface is intuitive and the features are robust. I highly recommend this software to anyone in need of a reliable project management tool.",
+    "rating": 4,
+    "avatar": "/assets/reviews/mary.png",
+    "person": "Mary Johnson | Project Manager"
+  },
+  {
+    "content": "Sova Registry is a must-have for any small business owner. It's easy to use, reliable, and has all the features you need to stay organized and on top of your game. I've recommended it to several of my colleagues and they love it too!",
+    "rating": 5,
+    "avatar": "/assets/reviews/david.png",
+    "person": "David Lee | Small Business Owner"
+  },
+  {
+    "content": "Sova Registry is a game-changer. The interface is simple and clean, making it easy to navigate and use. The support team is also incredibly helpful and responsive. I highly recommend this software to anyone in need of a powerful project management tool.",
+    "rating": 3,
+    "avatar": "/assets/reviews/kate.png",
+    "person": "Kate Thompson | Marketing Manager"
+  },
+  {
+    "content": "Yo this app is great. My son is gettig very good grades everyday. I love making jajecznica for him. I help him wear his clothes everyday. Come check my book 'Przez życia przesmyk'",
+    "rating": 5,
+    "avatar": "assets/reviews/agnieszka.png",
+    "person": "Agnieszka Czarnojan | Polish poet"
+  },
+  {
+    "content": "I've tried several project management tools in the past, but Sova Registry is by far the best. It has all the features I need to stay organized and on top of my projects, and the customer support is top-notch. Highly recommend!",
+    "rating": 5,
+    "avatar": "/assets/reviews/alex.png",
+    "person": "Alex Rodriguez | Freelance Writer"
+  },
+  {
+    "content": "Sova Registry has been a lifesaver for our team. It's easy to use, customizable, and has all the features we need to stay on top of our projects. Plus, the customer support team is always available to help with any questions or issues. Highly recommend!",
+    "rating": 5,
+    "avatar": "/assets/reviews/samantha.png",
+    "person": "Samantha Johnson | Team Manager"
+  },
+  {
+    "content": "Sova Registry is hands down the best project management tool on the market. The interface is sleek and modern, the features are robust, and the customer support team is top-notch. I can't recommend this software enough!",
+    "rating": 3,
+    "avatar": "/assets/reviews/mike.png",
+    "person": "Mike Thompson | Software Developer"
+  },
+  {
+    "content": "As a busy entrepreneur, I need a project management tool that is both easy to use and reliable. Sova Registry is both of those things and more. The features are top-notch and the customer support team is always available to help. Highly recommend to anyone in need of a powerful project management tool.",
+    "rating": 4,
+    "avatar": "/assets/reviews/sarah.png",
+    "person": "Sarah Davis | Entrepreneur"
+  }
+]
