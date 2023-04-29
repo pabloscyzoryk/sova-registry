@@ -6,12 +6,9 @@ generator client {
 }
 
 datasource db {
-    provider = "mysql"
-    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
-    url      = env("DATABASE_URL")
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
 // enums
@@ -38,6 +35,7 @@ model Account {
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
+    @@index([userId])
 }
 
 model Session {
@@ -46,6 +44,8 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
 }
 
 model User {
@@ -58,7 +58,7 @@ model User {
     secondName    String?
     accounts      Account[]
     sessions      Session[]
-    member        Member[]
+    member        Member[]  @relation(name: "user-team")
 }
 
 model VerificationToken {
@@ -77,18 +77,21 @@ model Team {
     image       String?
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
-    member      Member[]
+    member      Member[] @relation(name: "team-user")
 }
 
 model Member {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    role      Role     @default(student)
     userId    String
     teamId    String
-    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+    role      Role     @default(student)
+    User      User     @relation(name: "user-team", fields: [userId], references: [id], onDelete: Cascade)
+    Team      Team     @relation(name: "team-user", fields: [teamId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
+    @@index([teamId])
 }
 
 model Newsletter {
