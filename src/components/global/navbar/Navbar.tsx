@@ -1,25 +1,25 @@
 // imports
 import { type FC, useRef } from 'react';
 import useNavbar from './useNavbar';
-import { useSession } from 'next-auth/react'
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 // components
 import NavButton from './NavButton';
 
 // chakra-ui
-import { Divider, Flex, Text } from '@chakra-ui/react';
+import { Divider, Flex, Spinner, Text } from '@chakra-ui/react';
 
 const Navbar: FC = () => {
-  const { data: session } = useSession();
   const navbarRef = useRef<HTMLDivElement>(null);
+  const { status } = useSession();
+  console.log(status);
   useNavbar(navbarRef);
 
   return (
     <Flex
       justify='space-between'
-      maxW='100vw'
       as='nav'
+      w='100vw'
       backdropFilter={'blur(4px)'}
       align='center'
       zIndex={100}
@@ -27,7 +27,6 @@ const Navbar: FC = () => {
       left={0}
       top={0}
       position='fixed'
-      w='100vw'
       ref={navbarRef}
       fontWeight='bold'
       transition='.2s linear'
@@ -37,9 +36,9 @@ const Navbar: FC = () => {
       </Flex>
 
       <Flex h='full' align='center' mr='3%'>
-        {session ? (
-          <NavButton onClick={() => signOut()}>Log out</NavButton>
-        ) : (
+        { status === 'loading' && <Spinner color='white' /> }
+        { status === 'authenticated' && <NavButton onClick={() => signOut()}>Log out</NavButton> }
+        { status === 'unauthenticated' && (
           <>
             <NavButton href='/login'>Log in</NavButton>
             <Divider h='2em' orientation='vertical' />

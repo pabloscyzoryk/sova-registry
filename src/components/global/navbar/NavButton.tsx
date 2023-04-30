@@ -4,15 +4,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 // chakra-ui
-import { Button, Text, keyframes } from '@chakra-ui/react';
+import { Button, Text, keyframes, type ButtonProps } from '@chakra-ui/react';
 
-interface NavButtonProps {
-  children: string;
+interface NavButtonProps extends ButtonProps {
+  children?: string;
   href?: string;
-  onClick?: () => any;
 }
 
-const NavButton: FC<NavButtonProps> = ({ href, children, onClick }) => {
+const NavButton: FC<NavButtonProps> = ({ href, children, ...rest }) => {
   const portal = keyframes`
     50% {
         transform: translateY(-50px);
@@ -32,6 +31,7 @@ const NavButton: FC<NavButtonProps> = ({ href, children, onClick }) => {
     color: 'white',
     bg: 'transparent',
     _hover: { bg: 'transparent' },
+    ...rest
   };
 
   return (
@@ -52,7 +52,6 @@ const NavButton: FC<NavButtonProps> = ({ href, children, onClick }) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           as={href ? Link : Button}
-          onClick={onClick}
         >
           <Text animation={isHovered ? animation : ''}>{children}</Text>
         </Button>
