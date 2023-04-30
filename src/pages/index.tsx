@@ -1,6 +1,8 @@
 // imports
 import { type NextPage } from 'next';
 import { NextSeo } from 'next-seo';
+import { type GetServerSideProps } from 'next';
+import { getServerAuthSession } from '~/server/auth';
 
 // chakra-ui
 import { Box } from '@chakra-ui/react';

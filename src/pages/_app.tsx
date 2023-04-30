@@ -1,7 +1,10 @@
 // imports
 import { type AppType } from 'next/app';
 import { type Session } from 'next-auth';
+import { type GetServerSideProps } from 'next';
+import { authOptions } from '~/server/auth';
 import { SessionProvider } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
 import { DefaultSeo } from 'next-seo';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import SEO from '../../next-seo.config';

@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { type FormEvent } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub, FaDiscord } from 'react-icons/fa';
+import { useSession } from 'next-auth/react';
+import { type GetServerSideProps } from 'next';
+import { authOptions } from '~/server/auth';
+import { getServerSession } from 'next-auth';
 
 // components
 import PasswordInput from '~/components/common/PasswordInput';
@@ -30,6 +34,9 @@ const Login: NextPage = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
   };
+
+  const { data: session } = useSession();
+  console.log(session);
 
   return (
     <>
@@ -115,6 +122,7 @@ const Login: NextPage = () => {
 
           <Flex direction='column' gap={5} w='80%' justify='center' mt={8}>
             <LoggingMethod
+              provider='google'
               style={{
                 bg: '#ea4335',
                 color: 'white',
@@ -126,6 +134,7 @@ const Login: NextPage = () => {
               Log in with Google
             </LoggingMethod>
             <LoggingMethod
+              provider='discord'
               iconStyle={{ color: '#7289da' }}
               style={{
                 bg: '#7289da',
@@ -138,6 +147,7 @@ const Login: NextPage = () => {
               Log in with Discord
             </LoggingMethod>
             <LoggingMethod
+              provider='github'
               iconStyle={{ color: 'black' }}
               style={{
                 color: 'black',
@@ -193,6 +203,7 @@ const Login: NextPage = () => {
           </Flex>
           <Button
             position='absolute'
+            border='1px solid white'
             bottom={10}
             right={10}
             alignSelf='center'
@@ -210,5 +221,36 @@ const Login: NextPage = () => {
     </>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => { 
+  const session = await getServerSession(ctx.req, ctx.res, authOptions);
+  
+  if(!session) {
+    return {
+      props: {
+        session: null
+      }
+    }
+  }
+
+  const { firstName, secondName } = session.user;
+
+  console.log(session);
+  if(firstName && secondName) { 
+    return {
+      props: {
+        session
+      }
+    }
+  } 
+  else {
+    return {
+      redirect: {
+        destination: '/welcome',
+        permanent: false
+      }
+    }
+  }
+}
 
 export default Login;
