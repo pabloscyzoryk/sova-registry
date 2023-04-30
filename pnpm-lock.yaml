@@ -64,6 +64,9 @@ dependencies:
   next-seo:
     specifier: ^6.0.0
     version: 6.0.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
+  pnpm:
+    specifier: ^8.3.1
+    version: 8.3.1
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -3754,6 +3757,12 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /pnpm@8.3.1:
+    resolution: {integrity: sha512-0mT2ZAv08J3nz8xUdWhRW88GE89IWgPo/xZhb6acQXK2+aCikl7kT7Bg31ZcnJqOrwYXSed68xjLd/ZoSnBR8w==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false
 
   /postcss@8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}

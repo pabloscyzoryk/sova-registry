@@ -5,7 +5,7 @@ import { LiteralUnion, signIn } from 'next-auth/react';
 import { type BuiltInProviderType } from 'next-auth/providers';
 
 // chakra-ui
-import { Flex, Icon, Text, Center, FlexProps, IconProps } from '@chakra-ui/react';
+import { Flex, Icon, Text, Center, type FlexProps, type IconProps } from '@chakra-ui/react';
 
 interface LoggingMethodProps {
   children: string;
