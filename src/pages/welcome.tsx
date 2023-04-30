@@ -1,17 +1,37 @@
 // imports
 import { GetServerSideProps, type NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { type FormEvent } from 'react';
 
 // chakra-ui
-import { Box, Heading } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Center,
+  Flex,
+  Input,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+} from '@chakra-ui/react';
 import { getServerAuthSession } from '~/server/auth';
 
 const Welcome: NextPage = () => {
-    return (
-        <Box>
-            <Heading>Welcome to Sova!</Heading>
-            <Heading>Please provide your name and second name:</Heading>
-        </Box>
-    )
-}
+
+  const handleSubmit = async (e: FormEvent) => { 
+
+  };
+
+  return (
+    <>
+      <NextSeo title='Welcome' />
+      <Center as='main' maxW='100%' w='100vw' h='100vh' bg='primary'>
+        <Flex as='form'>
+
+        </Flex>
+      </Center>
+    </>
+  );
+};
 
 export default Welcome;

@@ -1,6 +1,8 @@
 // imports
 import { type FC, useRef } from 'react';
 import useNavbar from './useNavbar';
+import { useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react';
 
 // components
 import NavButton from './NavButton';
@@ -9,6 +11,7 @@ import NavButton from './NavButton';
 import { Divider, Flex, Text } from '@chakra-ui/react';
 
 const Navbar: FC = () => {
+  const { data: session } = useSession();
   const navbarRef = useRef<HTMLDivElement>(null);
   useNavbar(navbarRef);
 
@@ -34,9 +37,15 @@ const Navbar: FC = () => {
       </Flex>
 
       <Flex h='full' align='center' mr='3%'>
-        <NavButton href='/login'>Log in</NavButton>
-        <Divider h='2em' orientation='vertical' />
-        <NavButton href='/signup'>Sign up</NavButton>
+        {session ? (
+          <NavButton onClick={() => signOut()}>Log out</NavButton>
+        ) : (
+          <>
+            <NavButton href='/login'>Log in</NavButton>
+            <Divider h='2em' orientation='vertical' />
+            <NavButton href='/signup'>Sign up</NavButton>
+          </>
+        )}
       </Flex>
     </Flex>
   );

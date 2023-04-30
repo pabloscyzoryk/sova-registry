@@ -7,11 +7,12 @@ import { useState } from 'react';
 import { Button, Text, keyframes } from '@chakra-ui/react';
 
 interface NavButtonProps {
-  href: string;
   children: string;
+  href?: string;
+  onClick?: () => any;
 }
 
-const NavButton: FC<NavButtonProps> = ({ href, children }) => {
+const NavButton: FC<NavButtonProps> = ({ href, children, onClick }) => {
   const portal = keyframes`
     50% {
         transform: translateY(-50px);
@@ -24,21 +25,39 @@ const NavButton: FC<NavButtonProps> = ({ href, children }) => {
   const animation = `${portal} 0.45s ease-in-out`;
   const [isHovered, setIsHovered] = useState(false);
 
+  const styles = {
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    px: 5,
+    color: 'white',
+    bg: 'transparent',
+    _hover: { bg: 'transparent' },
+  };
+
   return (
-    <Button
-      overflow='hidden'
-      whiteSpace='nowrap'
-      px={5}
-      color='white'
-      bg='transparent'
-      _hover={{ bg: 'transparent' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      as={Link}
-      href={href}
-    >
-      <Text animation={isHovered ? animation : ''}>{children}</Text>
-    </Button>
+    <>
+      {href ? (
+        <Button
+          sx={styles}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          as={Link}
+          href={href}
+        >
+          <Text animation={isHovered ? animation : ''}>{children}</Text>
+        </Button>
+      ) : (
+        <Button
+          sx={styles}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          as={href ? Link : Button}
+          onClick={onClick}
+        >
+          <Text animation={isHovered ? animation : ''}>{children}</Text>
+        </Button>
+      )}
+    </>
   );
 };
 

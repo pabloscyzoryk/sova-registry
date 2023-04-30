@@ -235,7 +235,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const { firstName, secondName } = session.user;
 
-  console.log(session);
   if(firstName && secondName) { 
     return {
       props: {

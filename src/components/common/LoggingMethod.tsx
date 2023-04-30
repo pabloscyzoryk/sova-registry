@@ -1,7 +1,8 @@
 // imports
 import { type FC } from 'react';
 import { type IconType } from 'react-icons';
-import { signIn } from 'next-auth/react';
+import { LiteralUnion, signIn } from 'next-auth/react';
+import { type BuiltInProviderType } from 'next-auth/providers';
 
 // chakra-ui
 import { Flex, Icon, Text, Center, FlexProps, IconProps } from '@chakra-ui/react';
@@ -9,7 +10,7 @@ import { Flex, Icon, Text, Center, FlexProps, IconProps } from '@chakra-ui/react
 interface LoggingMethodProps {
   children: string;
   icon: IconType;
-  provider: string;
+  provider: LiteralUnion<BuiltInProviderType>;
   style?: FlexProps;
   iconStyle?: IconProps;
 }
